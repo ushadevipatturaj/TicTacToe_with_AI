@@ -8,7 +8,7 @@ meals = [
         {"title": "Oatmeal with honey and peanuts", "kcal": 440}]
 calories = 0
 for meal in meals:
-    for key, value in meal.items():
+    for key in meal:
         if key == 'kcal':
             calories += meal['kcal']
         else:
