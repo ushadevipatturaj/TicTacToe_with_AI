@@ -116,6 +116,8 @@ topics:
   2:
   - title: Introduction to OOP
     theory_id: 3614
+  - title: Immutability
+    theory_id: 7929
   - title: Computer programming
     theory_id: 8739
   - title: Intro to computational thinking
@@ -128,14 +130,22 @@ topics:
     theory_id: 7462
   - title: Arguments
     theory_id: 7248
+  - title: Operations with list
+    theory_id: 6031
   - title: String formatting
     theory_id: 6037
-  - title: Args
-    theory_id: 8560
+  - title: Identity testing
+    theory_id: 8077
   - title: Functional decomposition
     theory_id: 9571
   - title: Operations with dictionary
     theory_id: 9008
+  - title: Objects in Python
+    theory_id: 9262
+  - title: Default arguments
+    theory_id: 10295
+  - title: Args
+    theory_id: 8560
   - title: Kwargs
     theory_id: 9544
   - title: Class
