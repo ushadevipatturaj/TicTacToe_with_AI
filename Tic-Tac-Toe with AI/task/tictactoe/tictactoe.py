@@ -146,15 +146,28 @@ def print_board(board):
     print("---------")
 
 
-# input_cell = input("Enter cells:")
-# tic_tac_toe_board_1 = [input_cell[n:n + 3] for n, row in enumerate(input_cell) if n % 3 == 0]
-# print(tic_tac_toe_board_1)
+while True:
+    play_choice = input("Input command:")
+    if(len(play_choice.split()) < 3):
+        print("Bad parameters!")
+    elif(len(play_choice.split()) == 3):
+        break
 tic_tac_toe_board = [["_","_","_"] for n in range(3)]
 print_board(tic_tac_toe_board)
+choice = play_choice.split()
 # validate_win_scenarios(tic_tac_toe, input_cell)
 for i in range(9):
     modified_board =[]
-    if i % 2 == 0:
+    if choice[1] == "easy":
+        str = "X"
+        modified_board = computer_move(tic_tac_toe_board, str)
+        print_board(modified_board)
+        # input_cells = "".join([' '.join([str(c) for c in lst]) for lst in modified_board])
+        input_cells = ''.join([data for ele in modified_board for data in ele])
+        run = validate_win_scenarios(tic_tac_toe_board, input_cells)
+        if run:
+            break
+    elif choice[1] == "user":
         str = "X"
         modified_board = first_move(tic_tac_toe_board, str)
         print_board(modified_board)
@@ -163,9 +176,7 @@ for i in range(9):
         run = validate_win_scenarios(tic_tac_toe_board, input_cells)
         if run:
             break
-        else:
-            continue
-    else:
+    if choice[2] == "easy":
         str = "O"
         modified_board = computer_move(tic_tac_toe_board, str)
         print_board(modified_board)
@@ -174,8 +185,15 @@ for i in range(9):
         run = validate_win_scenarios(tic_tac_toe_board, input_cells)
         if run:
             break
-        else:
-            continue
+    elif choice[2] == "user":
+        str = "O"
+        modified_board = first_move(tic_tac_toe_board, str)
+        print_board(modified_board)
+        # input_cells = "".join([' '.join([str(c) for c in lst]) for lst in modified_board])
+        input_cells = ''.join([data for ele in modified_board for data in ele])
+        run = validate_win_scenarios(tic_tac_toe_board, input_cells)
+        if run:
+            break
 
     tic_tac_toe_board = modified_board
 
