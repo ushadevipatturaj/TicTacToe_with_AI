@@ -126,17 +126,63 @@ def first_move(board, char):
                     print("This cell is occupied! Choose another one!")
                     continue
 
-def computer_move(board, char):
-    x, y = 0, 0
-    print('Making move level "easy"')
-    for i in range(len(board)):
-        for j in range(len(board[0])):
-            if board[i][j] == "_":
-                # board[i][j] = "X"
-                board[i] = [char if n == j else board[i][n] for n, row in enumerate(board[i])]
+def computer_move(board, char, level):
+    if char == "X":
+        opp_char = "O"
+    else:
+        opp_char = "X"
+    if level == "easy":
+        print('Making move level "easy"')
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if board[i][j] == "_":
+                    # board[i][j] = "X"
+                    board[i] = [char if n == j else board[i][n] for n, row in enumerate(board[i])]
+                    return board
+                else:
+                    continue
+    elif level == "medium":
+        x, y = 0, 0
+        print('Making move level "medium"')
+        for i in range(len(board)):
+            if board[i].count(char) == 2 and "_" in board[i] :
+                index_space = board[i].index("_")
+                board[i][index_space] = char
+                return board
+            elif board[i].count(opp_char) == 2 and "_" in board[i]:
+                index_space = board[i].index("_")
+                board[i][index_space] = char
                 return board
             else:
-                continue
+                for i in range(len(board)):
+                    for j in range(len(board[0])):
+                        if board[i][j] == "_":
+                            # board[i][j] = "X"
+                            board[i] = [char if n == j else board[i][n] for n, row in enumerate(board[i])]
+                            return board
+                        else:
+                            continue
+    elif level == "hard":
+        x, y = 0, 0
+        print('Making move level "medium"')
+        for i in range(len(board)):
+            if board[i].count(char) == 2 and "_" in board[i] :
+                index_space = board[i].index("_")
+                board[i][index_space] = char
+                return board
+            elif board[i].count(opp_char) == 2 and "_" in board[i]:
+                index_space = board[i].index("_")
+                board[i][index_space] = char
+                return board
+            else:
+                for i in range(len(board)):
+                    for j in range(len(board[0])):
+                        if board[i][j] == "_":
+                            # board[i][j] = "X"
+                            board[i] = [char if n == j else board[i][n] for n, row in enumerate(board[i])]
+                            return board
+                        else:
+                            continue
 
 
 def print_board(board):
@@ -158,9 +204,9 @@ choice = play_choice.split()
 # validate_win_scenarios(tic_tac_toe, input_cell)
 for i in range(9):
     modified_board =[]
-    if choice[1] == "easy":
+    if choice[1] in("easy", "medium", "hard"):
         str = "X"
-        modified_board = computer_move(tic_tac_toe_board, str)
+        modified_board = computer_move(tic_tac_toe_board, str, choice[1])
         print_board(modified_board)
         # input_cells = "".join([' '.join([str(c) for c in lst]) for lst in modified_board])
         input_cells = ''.join([data for ele in modified_board for data in ele])
@@ -176,9 +222,9 @@ for i in range(9):
         run = validate_win_scenarios(tic_tac_toe_board, input_cells)
         if run:
             break
-    if choice[2] == "easy":
+    if choice[2] in("easy", "medium", "hard"):
         str = "O"
-        modified_board = computer_move(tic_tac_toe_board, str)
+        modified_board = computer_move(tic_tac_toe_board, str, choice[2])
         print_board(modified_board)
         # input_cells = "".join([' '.join([str(c) for c in lst]) for lst in modified_board])
         input_cells = ''.join([data for ele in modified_board for data in ele])
